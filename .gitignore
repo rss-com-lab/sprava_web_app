@@ -59,3 +59,10 @@ typings/
 
 # next.js build output
 .next
+
+# build products
+src/**/*.css
+
+#vscode debug
+.vscode/
+.vscode-janus-debug
