@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/sprava_web_app/static/css/main.e712619e.chunk.css"
   },
   {
-    "revision": "069f85f57c9faeccde2898b2a2971f80",
+    "revision": "64a04b28df61f7a112bbe3d94372a862",
     "url": "/sprava_web_app/index.html"
   }
 ];
