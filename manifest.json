@@ -3,7 +3,7 @@
   "short_name": "SRRAVA App",
   "description": "It helps to find events on SPRAVA festival",
   "lang": "ru-RU",
-  "start_url": "https://rss-com-lab.github.io/sprava_web_app",
+  "start_url": "https://rss-com-lab.github.io/sprava_web_app/",
   "display": "standalone",
   "theme_color": "#0275d8",
   "icons": [
