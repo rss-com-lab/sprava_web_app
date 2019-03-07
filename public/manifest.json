@@ -1,0 +1,16 @@
+{
+  "name": "SPRAVA Web App",
+  "short_name": "SRRAVA App",
+  "description": "It helps to find events on SPRAVA festival",
+  "lang": "ru-RU",
+  "start_url": "https://rss-com-lab.github.io/sprava_web_app/",
+  "display": "standalone",
+  "theme_color": "#0275d8",
+  "icons": [
+    {
+      "src": "icons/logo2.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
