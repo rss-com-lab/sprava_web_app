@@ -8,7 +8,16 @@ const getVisibleEvents = (filter) => {
     case VisibilityFilters.SHOW_ALL:
       return eventsData;
     case VisibilityFilters.SHOW_SAVED:
-      return eventsData;
+    {
+      const localIdArray = (localStorage.getItem('checkedEventList'))
+        ? localStorage.getItem('checkedEventList').split(',').map(elem => parseInt(elem, 10))
+        : [];
+      const savedEventsList = [];
+      localIdArray.forEach((elem) => {
+        savedEventsList.push(eventsData.find(event => event.id === elem));
+      });
+      return savedEventsList;
+    }
     default:
       throw new Error(`Unknown filter: ${filter}`);
   }
