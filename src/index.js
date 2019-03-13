@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import visibilityFilters from './reducers/visibilityFilters';
-import App from './App';
+import App from './components/app/App';
 
 import * as serviceWorker from './serviceWorker';
+import './styleReset.css';
 import './index.css';
 
 const store = createStore(

@@ -5,7 +5,7 @@ import Event from '../event/event';
 import './eventList.scss';
 
 const EventList = ({ events }) => (
-  <>
+  <div className="events-section__event-list">
     {events.map(e => (
       <Event
         key={e.id}
@@ -14,9 +14,10 @@ const EventList = ({ events }) => (
         location={e.location}
         time={e.time}
         description={e.description}
+        checkboxHidden={Boolean(e.disable)}
       />
     ))}
-  </>
+  </div>
 );
 
 EventList.propTypes = {

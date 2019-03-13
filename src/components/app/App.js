@@ -1,6 +1,6 @@
 import React from 'react';
-import VisibleEventsList from './containers/visibleEventList';
-import ControlBtns from './components/controlBtns/controlBtns';
+import VisibleEventsList from '../../containers/visibleEventList';
+import ControlBtns from '../controlBtns/controlBtns';
 import './App.scss';
 
 const App = () => (
