@@ -14,7 +14,9 @@ const getVisibleEvents = (filter) => {
         : [];
       const savedEventsList = [];
       localIdArray.forEach((elem) => {
-        savedEventsList.push(eventsData.find(event => event.id === elem));
+        const currentEvent = eventsData.find(event => event.id === elem);
+        currentEvent.disable = true;
+        savedEventsList.push(currentEvent);
       });
       return savedEventsList;
     }

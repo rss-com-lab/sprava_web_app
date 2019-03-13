@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './checkbox.scss';
+
 class Checkbox extends React.Component {
   state = {
     isChecked: false,
@@ -23,8 +25,8 @@ class Checkbox extends React.Component {
     const { isChecked } = this.state;
 
     return (
-      <div className="checkbox">
-        <label>
+      <div className="checkbox__container">
+        <label className="label__control">
           <input
             type="checkbox"
             value={label}
