@@ -4,14 +4,14 @@ import { VisibilityFilters, setVisibilityFilter } from '../actions/index';
 import eventsData from '../eventsData/eventsData';
 
 const getVisibleEvents = (filter) => {
+  const localIdArray = (localStorage.getItem('checkedEventList'))
+    ? localStorage.getItem('checkedEventList').split(',').map(elem => parseInt(elem, 10))
+    : [];
+  let currentEventList = [];
   switch (filter) {
     case VisibilityFilters.SHOW_ALL:
     {
-      const localIdArray = (localStorage.getItem('checkedEventList'))
-        ? localStorage.getItem('checkedEventList').split(',').map(elem => parseInt(elem, 10))
-        : [];
-      const currentEventList = [];
-      if (localIdArray.length > 0) {
+      if (localIdArray.length > 0) { // to checked saved events
         localIdArray.forEach((eventId) => {
           const currentEvent = eventsData.find(event => event.id === eventId);
           currentEvent.disable = true;
@@ -25,21 +25,19 @@ const getVisibleEvents = (filter) => {
           }
         });
         currentEventList.sort((event, nextEvent) => event.id - nextEvent.id);
+      } else {
+        currentEventList = eventsData.slice(); // if haven't saved upload clean list
       }
       return currentEventList;
     }
     case VisibilityFilters.SHOW_SAVED:
     {
-      const localIdArray = (localStorage.getItem('checkedEventList'))
-        ? localStorage.getItem('checkedEventList').split(',').map(elem => parseInt(elem, 10))
-        : [];
-      const savedEventsList = [];
-      localIdArray.forEach((elem) => {
+      localIdArray.forEach((elem) => { // show only saved events
         const currentEvent = eventsData.find(event => event.id === elem);
         currentEvent.disable = true;
-        savedEventsList.push(currentEvent);
+        currentEventList.push(currentEvent);
       });
-      return savedEventsList;
+      return currentEventList;
     }
     default:
       throw new Error(`Unknown filter: ${filter}`);

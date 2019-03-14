@@ -62,6 +62,7 @@ typings/
 
 # build products
 src/**/*.css
+!src/styleReset.css
 build/
 
 #vscode debug
