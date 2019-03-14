@@ -4,8 +4,12 @@ import PropTypes from 'prop-types';
 import './checkbox.scss';
 
 class Checkbox extends React.Component {
-  state = {
-    isChecked: false,
+  constructor(props) {
+    super(props);
+    this.state = {
+      isChecked: props.isSaved,
+    };
+    this.toggleCheckboxChange.bind(this);
   }
 
   toggleCheckboxChange = (event) => {
@@ -23,10 +27,9 @@ class Checkbox extends React.Component {
   render() {
     const { label, id } = this.props;
     const { isChecked } = this.state;
-
     return (
       <div className="checkbox__container">
-        <label className="label__control">
+        <label htmlFor={id} className="label__control">
           <input
             type="checkbox"
             value={label}
@@ -34,7 +37,6 @@ class Checkbox extends React.Component {
             onChange={this.toggleCheckboxChange}
             id={id}
           />
-
           {label}
         </label>
       </div>
@@ -46,6 +48,7 @@ Checkbox.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   handleCheckboxChange: PropTypes.func.isRequired,
+  isSaved: PropTypes.bool.isRequired,
 };
 
 export default Checkbox;

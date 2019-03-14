@@ -8,7 +8,7 @@
   "theme_color": "#0275d8",
   "icons": [
     {
-      "src": "icons/logo2.png",
+      "src": "icons/sprava_logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }

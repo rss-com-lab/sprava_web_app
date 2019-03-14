@@ -24,12 +24,8 @@ const Event = ({
         {description}
       </p>
     </div>
-    <div className={cn('events-section__event-checkbox',
-      {
-        hidden: checkboxHidden,
-      })}
-    >
-      <Checkbox label="Выбрать" handleCheckboxChange={saveEvents} id={cn(`choose-event-${id}`)} />
+    <div className="events-section__event-checkbox">
+      <Checkbox label="Выбрать" isSaved={checkboxHidden} handleCheckboxChange={saveEvents} id={cn(`choose-event-${id}`)} />
     </div>
   </div>
 );
