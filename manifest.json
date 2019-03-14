@@ -6,6 +6,7 @@
   "start_url": "https://rss-com-lab.github.io/sprava_web_app/",
   "display": "standalone",
   "theme_color": "#0275d8",
+  "background_color ": "#ACD037",
   "icons": [
     {
       "src": "icons/sprava_logo-192x192.png",
