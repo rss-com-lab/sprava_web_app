@@ -6,8 +6,14 @@
   border-bottom: 5px solid rgb(119, 119, 119);
 }
 
+.events-section__event-container{
+  position: relative;
+}
+
 .events-section__event-checkbox{
-  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 30px;
 }
 
 .event-data__event-header{
