@@ -7,7 +7,7 @@ import saveEvents from '../../api/saveEvents';
 import './event.scss';
 
 const Event = ({
-  id, eventName, location, time, description, checkboxHidden,
+  id, eventName, location, time, description, isEventSave,
 }) => (
   <div className="events-section__event-container" id={id}>
     <div className="events-section__event-data">
@@ -25,7 +25,7 @@ const Event = ({
       </p>
     </div>
     <div className="events-section__event-checkbox">
-      <Checkbox label="Выбрать" isSaved={checkboxHidden} handleCheckboxChange={saveEvents} id={cn(`choose-event-${id}`)} />
+      <Checkbox label="Выбрать" isSaved={isEventSave} handleCheckboxChange={saveEvents} id={cn(`choose-event-${id}`)} />
     </div>
   </div>
 );
@@ -36,7 +36,7 @@ Event.propTypes = {
   location: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  checkboxHidden: PropTypes.bool.isRequired,
+  isEventSave: PropTypes.bool.isRequired,
 };
 
 export default Event;

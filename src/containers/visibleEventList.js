@@ -14,13 +14,13 @@ const getVisibleEvents = (filter) => {
       if (localIdArray.length > 0) { // to checked saved events
         localIdArray.forEach((eventId) => {
           const currentEvent = eventsData.find(event => event.id === eventId);
-          currentEvent.disable = true;
+          currentEvent.checked = true;
           currentEventList.push(currentEvent);
         });
         eventsData.forEach((event) => {
           if (!currentEventList.find(e => e.id === event.id)) {
             const currentEvent = event;
-            currentEvent.disable = false;
+            currentEvent.checked = false;
             currentEventList.push(currentEvent);
           }
         });
@@ -34,7 +34,7 @@ const getVisibleEvents = (filter) => {
     {
       localIdArray.forEach((elem) => { // show only saved events
         const currentEvent = eventsData.find(event => event.id === elem);
-        currentEvent.disable = true;
+        currentEvent.checked = true;
         currentEventList.push(currentEvent);
       });
       return currentEventList;
@@ -45,7 +45,7 @@ const getVisibleEvents = (filter) => {
 };
 
 const mapStateToProps = state => ({
-  events: getVisibleEvents(state.visibilityFilter),
+  events: getVisibleEvents(state.visibilityFilter.filter),
 });
 
 const mapDispatchToProps = dispatch => ({
