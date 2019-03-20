@@ -1,5 +1,35 @@
 .events-section__event-container{
-  .events-checkbox__container{
-    cursor: pointer;
-  }
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  padding-bottom: 20px;
+  border-bottom: 5px solid rgb(119, 119, 119);
+}
+
+.events-section__event-container{
+  position: relative;
+}
+
+.events-section__event-checkbox{
+  position: absolute;
+  right: 0;
+  top: 30px;
+}
+
+.event-data__event-header{
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.events-section__event-descr{
+  display: block;
+}
+
+.event-data__event-location, 
+.event-data__event-time{
+  margin: 20px 0;
+}
+
+.hidden{
+  display: none;
 }
