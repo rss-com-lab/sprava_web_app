@@ -1,0 +1,38 @@
+//reset style
+.controlBtns__switcher-btn {
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.controlBtns__switcher-btn {
+    font-family: inherit;
+    padding: 10px;
+    color: #000;
+    border-radius: 3px;
+    width: 100px;
+    text-align: center;
+    margin: 0 5px;
+    background-color: #fff;
+    border: 2px solid #262625;
+}
+
+.controlBtns__switcher-btn:disabled {
+    background-color: #262625;
+    color: #fff;
+}
+
+.controlBtns__switcher-btn:hover {
+    background-color: #9c9c9c;
+    color: #fff;
+    border: 0;
+}
+
+.controlBtns__switcher-btn:disabled:hover{
+    background-color: #4f4f4e;
+    border: 2px solid #4f4f4e;
+}
+
+.controlBtns__switcher-btn:active{
+    background-color: #ACD037;
+}
