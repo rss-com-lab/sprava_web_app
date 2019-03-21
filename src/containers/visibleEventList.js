@@ -13,7 +13,7 @@ const getVisibleEvents = (filter) => {
     {
       if (localIdArray.length > 0) { // to checked saved events
         localIdArray.forEach((eventId) => {
-          const currentEvent = eventsData.find(event => event.id === eventId);
+          const currentEvent = { ...eventsData.find(event => event.id === eventId) };
           currentEvent.checked = true;
           currentEventList.push(currentEvent);
         });
@@ -33,7 +33,7 @@ const getVisibleEvents = (filter) => {
     case VisibilityFilters.SHOW_SAVED:
     {
       localIdArray.forEach((elem) => { // show only saved events
-        const currentEvent = eventsData.find(event => event.id === elem);
+        const currentEvent = { ...eventsData.find(event => event.id === elem) };
         currentEvent.checked = true;
         currentEventList.push(currentEvent);
       });
