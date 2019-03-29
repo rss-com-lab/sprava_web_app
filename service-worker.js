@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/sprava_web_app/precache-manifest.b266b666c54e26711b3b7a2e408d3e02.js"
+  "/sprava_web_app/precache-manifest.c41eb4b4b96a3665cad3bde965fa1abc.js"
 );
 
 workbox.clientsClaim();
