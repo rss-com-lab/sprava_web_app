@@ -1,45 +1,42 @@
 import { connect } from 'react-redux';
 import EventList from '../components/eventList/eventList';
-import { VisibilityFilters, setVisibilityFilter } from '../actions/index';
-import musicAPI from '../eventsData/musicAPI';
-// import fetchData from '../api/fetchData';
+import { VisibilityFilters, setVisibilityFilter, itemsFetchData } from '../actions/index';
 
-const getVisibleEvents = (filter) => {
-  // console.log(fetchData('music', { mode: 'no-cors' }));
+const getVisibleEvents = (filter, items) => {
+  let musicAPI;
   const localIdArray = (localStorage.getItem('checkedEventList'))
     ? localStorage.getItem('checkedEventList').split(',')
     : [];
   const currentEventListExperiment = [];
-  Object.keys(musicAPI).forEach((day) => { // if haven't saved upload clean list
-    Object.keys(musicAPI[day].items).forEach((item) => {
-      const customItem = { ...musicAPI[day].items[item] };
-      customItem.date = musicAPI[day].date;
-      customItem.id = `${item}/date-${(customItem.date).split('')[0]}`;
-      customItem.checked = false;
-      currentEventListExperiment.push(customItem);
+
+  if (!(Object.entries(items).length === 0 && items.constructor === Object)) {
+    musicAPI = { ...items };
+    Object.keys(musicAPI).forEach((day) => { // if haven't saved upload clean list
+      Object.keys(musicAPI[day].items).forEach((item) => {
+        const customItem = { ...musicAPI[day].items[item] };
+        customItem.date = musicAPI[day].date;
+        customItem.id = `${item}/date-${(customItem.date).split('')[0]}`;
+        customItem.checked = false;
+        currentEventListExperiment.push(customItem);
+      });
     });
-  });
+    if (localIdArray.length > 0
+      && currentEventListExperiment.length > 0) { // to checked saved events but to initial state
+      localIdArray.forEach((eventId) => {
+        const currentEvent = currentEventListExperiment // deep copy !!!
+          .find(event => event.id === eventId);
+        currentEvent.checked = true;
+      });
+    }
+  }
+
   switch (filter) {
     case VisibilityFilters.SHOW_ALL:
     {
-      if (localIdArray.length > 0) { // to checked saved events
-        localIdArray.forEach((eventId) => {
-          const currentEvent = currentEventListExperiment // deep copy !!!
-            .find(event => event.id === eventId);
-          currentEvent.checked = true;
-        });
-      }
       return currentEventListExperiment;
     }
     case VisibilityFilters.SHOW_SAVED:
     {
-      if (localIdArray.length > 0) {
-        localIdArray.forEach((eventId) => {
-          const currentEvent = currentEventListExperiment
-            .find(event => event.id === eventId);
-          currentEvent.checked = true;
-        });
-      }
       return currentEventListExperiment.filter(event => event.checked === true);
     }
     default:
@@ -48,11 +45,15 @@ const getVisibleEvents = (filter) => {
 };
 
 const mapStateToProps = state => ({
-  events: getVisibleEvents(state.visibilityFilter.filter),
+  events: getVisibleEvents(state.visibilityFilter.filter, state.items),
+  items: state.items,
+  hasErrored: state.itemsHasErrored,
+  isLoading: state.itemsIsLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
   setVisibilityFilter: filter => dispatch(setVisibilityFilter(filter)),
+  fetchData: url => dispatch(itemsFetchData(url)),
 });
 
 export default connect(
