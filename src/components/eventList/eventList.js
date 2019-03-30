@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Event from '../event/event';
+import Loading from '../loading/loading';
 
 import './eventList.scss';
 
@@ -21,7 +22,7 @@ class EventList extends React.Component {
     }
 
     if (isLoading) {
-      return <p>Loading…</p>;
+      return <Loading />;
     }
 
     return (
