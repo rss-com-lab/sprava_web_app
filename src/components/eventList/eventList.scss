@@ -1,5 +1,13 @@
 .events-section__event-list-container,
-.events-section__first-day-events-list,
-.events-section__secound-day-events {
+.events-section__first-day-events-list {
   margin: 0 auto;
+}
+
+.events-sevtion__schedule {
+  margin: 20px auto;
+}
+
+.events-section__day-title {
+  font-size: 40px;
+  font-style: italic;
 }

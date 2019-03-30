@@ -10,24 +10,29 @@ const Event = ({
   img, title, schedule, link, isEventSave, id,
 }) => (
   <div className="events-section__event-container">
+    <h4 className="event-data__event-header">
+      {Parser(title)}
+    </h4>
     <div className="events-section__event-data">
-      <h4 className="event-data__event-header">
-        {Parser(title)}
-      </h4>
-      <div className="events-section__event-img">{img}</div>
-      {Object.keys(schedule).map(eventParam => (
-        <div className="events-section__event-params">
-          <h5 className="events-section__event-location">{schedule[eventParam].point}</h5>
-          <p className="events-section__time">
-            {schedule[eventParam].timeStart}
+      <div className="events-section__event-img">
+        {/* <img src={img} alt={`${title} preview`} /> */}
+        <img src="http://www.troitsa.net/templates/rhuk_solarflare_ii/new_Footer_2017_1.jpg" alt={`${title} preview`} />
+      </div>
+      <div className="events-sevtion__schedule">
+        {Object.keys(schedule).map(eventParam => (
+          <div className="events-section__event-params">
+            <h5 className="events-section__event-location">{schedule[eventParam].point}</h5>
+            <p className="events-section__time">
+              {schedule[eventParam].timeStart}
             -
-            {schedule[eventParam].timeEnd}
-          </p>
-        </div>
-      ))}
-      <p className="event-data__event-descr">
-        {link}
-      </p>
+              {schedule[eventParam].timeEnd}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div className="event-data__group-link-container">
+      <a href={link} className="event-data__group-link">Сайт группы</a>
     </div>
     <div className="events-section__event-checkbox">
       <Checkbox label="Выбрать" isSaved={isEventSave} id={id} handleCheckboxChange={saveEvents} />

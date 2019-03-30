@@ -25,7 +25,7 @@
 .controlBtns__switcher-btn:hover {
     background-color: #9c9c9c;
     color: #fff;
-    border: 0;
+    border-color: #9c9c9c;
 }
 
 .controlBtns__switcher-btn:disabled:hover{
@@ -35,4 +35,5 @@
 
 .controlBtns__switcher-btn:active{
     background-color: #ACD037;
+    border-color: #ACD037;
 }
