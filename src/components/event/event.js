@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Parser from 'html-react-parser';
 import Checkbox from '../checkbox/checkbox';
 import saveEvents from '../../api/saveEvents';
+import replaceAll from '../../api/replaceAll';
 
 import './event.scss';
 
@@ -32,7 +33,13 @@ const Event = ({
       </div>
     </div>
     <div className="event-data__group-link-container">
-      <a href={link} className="event-data__group-link">Сайт группы</a>
+      <a
+        href={link}
+        title={replaceAll(title, '<br/>', ' ')}
+        className="event-data__group-link"
+      >
+      Сайт группы
+      </a>
     </div>
     <div className="events-section__event-checkbox">
       <Checkbox label="Выбрать" isSaved={isEventSave} id={id} handleCheckboxChange={saveEvents} />
