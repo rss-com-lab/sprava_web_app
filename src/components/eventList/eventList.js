@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Event from '../event/event';
 import Loading from '../loading/loading';
+import RequestField from '../requestField/requestField';
 
 import './eventList.scss';
 
@@ -18,7 +19,7 @@ class EventList extends React.Component {
       isLoading,
     } = this.props;
     if (hasErrored) {
-      return <p>Sorry! There was an error loading the items</p>;
+      return <RequestField />;
     }
 
     if (isLoading) {
@@ -27,8 +28,13 @@ class EventList extends React.Component {
 
     return (
       <div className="events-section__event-list-container" id="event-list">
-        <div className="events-section__first-day-events">
-          <h5>4 АВГУСТА</h5>
+        <div
+          className="events-section__first-day-events"
+          style={(Object.keys(events)
+            .filter(e => events[e].date === '4 АВГУСТА').length > 0)
+            ? { display: 'block' } : { display: 'none' }}
+        >
+          <h5 className="events-section__day-title">4 АВГУСТА</h5>
           <div className="events-section__first-day-events-list">
             {(Object.keys(events)
               .filter(e => events[e].date === '4 АВГУСТА'))
@@ -46,8 +52,13 @@ class EventList extends React.Component {
               ))}
           </div>
         </div>
-        <div className="events-section__secound-day-events">
-          <h5>5 АВГУСТА</h5>
+        <div
+          className="events-section__secound-day-events"
+          style={(Object.keys(events)
+            .filter(e => events[e].date === '5 АВГУСТА').length > 0)
+            ? { display: 'block' } : { display: 'none' }}
+        >
+          <h5 className="events-section__day-title">5 АВГУСТА</h5>
           <div className="events-section__secound-day-events-list">
             {(Object.keys(events)
               .filter(e => events[e].date === '5 АВГУСТА'))
