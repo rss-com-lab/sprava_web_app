@@ -25,13 +25,13 @@
   height: 100%;
   width: 100%;
   max-height: 300px;
-  max-width: 600px;
+  max-width: 300px;
 }
 
 .events-section__event-params {
   display: flex;
   flex-direction: row;
-  min-width: 300px;
+  min-width: 240px;
   justify-content: space-between;
 }
 
@@ -42,15 +42,14 @@
 .event-data__event-header{
   font-weight: bold;
   text-align: center;
-  font-size: 25px;
   margin: 50px auto;
-  font-size: 35px;
+  font-size: 25px;
 }
 
 .events-sevtion__schedule {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 20px auto;
   justify-content: center;
 }
 
@@ -75,7 +74,7 @@
 
 .event-data__group-link {
   text-align: center;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .hidden{
