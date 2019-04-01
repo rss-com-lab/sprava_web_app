@@ -16,8 +16,7 @@ const Event = ({
     </h4>
     <div className="events-section__event-data">
       <div className="events-section__event-img">
-        {/* <img src={img} alt={`${title} preview`} /> */}
-        <img src="http://www.troitsa.net/templates/rhuk_solarflare_ii/new_Footer_2017_1.jpg" alt={`${title} preview`} />
+        <img src={`http://spravafestival.by/${img}`} alt={`${title} preview`} />
       </div>
       <div className="events-sevtion__schedule">
         {Object.keys(schedule).map(eventParam => (
@@ -35,6 +34,7 @@ const Event = ({
     <div className="event-data__group-link-container">
       <a
         href={link}
+        target="blank"
         title={replaceAll(title, '<br/>', ' ')}
         className="event-data__group-link"
       >
