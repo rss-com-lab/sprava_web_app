@@ -1,4 +1,4 @@
-import fetch from 'cross-fetch';
+import 'whatwg-fetch';
 
 export const setVisibilityFilter = filter => ({
   type: 'SET_VISIBILITY_FILTER',
@@ -37,7 +37,7 @@ export function itemsFetchData(url) {
   return (dispatch) => {
     dispatch(itemsIsLoading(true));
 
-    fetch(url)
+    window.fetch(url, { cache: 'force-cache' })
       .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);
