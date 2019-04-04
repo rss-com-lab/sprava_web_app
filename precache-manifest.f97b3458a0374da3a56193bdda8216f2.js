@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/sprava_web_app/static/js/runtime~main.6394e6c5.js"
   },
   {
-    "revision": "b3bda6ad4c708dc8cae6",
-    "url": "/sprava_web_app/static/js/main.b3bda6ad.chunk.js"
+    "revision": "dd00f2277d8cf961a41c",
+    "url": "/sprava_web_app/static/js/main.dd00f227.chunk.js"
   },
   {
     "revision": "beaf90dc47fa3bdb98ac",
     "url": "/sprava_web_app/static/js/2.beaf90dc.chunk.js"
   },
   {
-    "revision": "b3bda6ad4c708dc8cae6",
+    "revision": "dd00f2277d8cf961a41c",
     "url": "/sprava_web_app/static/css/main.0e4e6485.chunk.css"
   },
   {
-    "revision": "532529d5555b0009ac00dfa41f2bc8fd",
+    "revision": "70bd43c13eebf1d02d1f83911c44e20b",
     "url": "/sprava_web_app/index.html"
   }
 ];
