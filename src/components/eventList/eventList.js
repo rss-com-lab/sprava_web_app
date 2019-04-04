@@ -9,7 +9,7 @@ import './eventList.scss';
 class EventList extends React.Component {
   componentDidMount() {
     const { fetchData } = this.props;
-    fetchData('https://cors-anywhere.herokuapp.com/http://spravafestival.by/api/music', { mode: 'cors' });
+    fetchData('https://cors-anywhere.herokuapp.com/http://spravafestival.by/api/music');
   }
 
   render() {
