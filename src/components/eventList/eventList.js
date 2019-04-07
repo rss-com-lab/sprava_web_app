@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import Event from '../event/event';
 import Loading from '../loading/loading';
 import RequestField from '../requestField/requestField';
-
+import { SPRAVA_API_MAIN_URL, CORS_URL, SPRAVA_API_URL } from '../../constants/constants';
+import FESTIVAL_DAYS from '../../app-config/app-config';
 import './eventList.scss';
 
 class EventList extends React.Component {
   componentDidMount() {
     const { fetchData } = this.props;
-    fetchData('https://cors-anywhere.herokuapp.com/http://spravafestival.by/api/music');
+    fetchData(`${CORS_URL}/${SPRAVA_API_MAIN_URL}/${SPRAVA_API_URL.music}`);
   }
 
   render() {
@@ -31,13 +32,13 @@ class EventList extends React.Component {
         <div
           className="events-section__first-day-events"
           style={(Object.keys(events)
-            .filter(e => events[e].date === '4 АВГУСТА').length > 0)
+            .filter(e => events[e].date === `${FESTIVAL_DAYS.FIRST_DAY}`).length > 0)
             ? { display: 'block' } : { display: 'none' }}
         >
-          <h5 className="events-section__day-title">4 АВГУСТА</h5>
+          <h5 className="events-section__day-title">{FESTIVAL_DAYS.FIRST_DAY}</h5>
           <div className="events-section__first-day-events-list">
             {(Object.keys(events)
-              .filter(e => events[e].date === '4 АВГУСТА'))
+              .filter(e => events[e].date === `${FESTIVAL_DAYS.FIRST_DAY}`))
               .map(eventNumber => (
                 <Event
                   key={events[eventNumber].id.match(/^\d+/)[0]
@@ -55,13 +56,13 @@ class EventList extends React.Component {
         <div
           className="events-section__secound-day-events"
           style={(Object.keys(events)
-            .filter(e => events[e].date === '5 АВГУСТА').length > 0)
+            .filter(e => events[e].date === `${FESTIVAL_DAYS.SECOUND_DAY}`).length > 0)
             ? { display: 'block' } : { display: 'none' }}
         >
-          <h5 className="events-section__day-title">5 АВГУСТА</h5>
+          <h5 className="events-section__day-title">{FESTIVAL_DAYS.SECOUND_DAY}</h5>
           <div className="events-section__secound-day-events-list">
             {(Object.keys(events)
-              .filter(e => events[e].date === '5 АВГУСТА'))
+              .filter(e => events[e].date === `${FESTIVAL_DAYS.SECOUND_DAY}`))
               .map(eventNumber => (
                 <Event
                   key={events[eventNumber].id.match(/^\d+/)[0]

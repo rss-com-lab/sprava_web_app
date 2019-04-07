@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import EventList from '../components/eventList/eventList';
-import { VisibilityFilters, setVisibilityFilter, itemsFetchData } from '../actions/index';
+import { setVisibilityFilter, itemsFetchData } from '../actions/index';
+import { VisibilityFilters } from '../constants/constants';
 
 const getVisibleEvents = (filter, items) => {
   let musicAPI;
@@ -45,11 +46,13 @@ const getVisibleEvents = (filter, items) => {
 };
 
 const mapStateToProps = state => ({
-  events: getVisibleEvents(state.visibilityFilter.filter, state.items),
-  items: state.items,
-  hasErrored: state.itemsHasErrored,
-  isLoading: state.itemsIsLoading,
+  events: getVisibleEvents(state.visibilityFilter.payload.filter,
+    state.itemsFetchDataSuccess.payload.items),
+  items: state.itemsFetchDataSuccess.payload.items,
+  hasErrored: state.itemsHasErrored.payload.flag,
+  isLoading: state.itemsIsLoading.payload.flag,
 });
+
 
 const mapDispatchToProps = dispatch => ({
   setVisibilityFilter: filter => dispatch(setVisibilityFilter(filter)),

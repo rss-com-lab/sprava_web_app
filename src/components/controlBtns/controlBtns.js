@@ -1,6 +1,6 @@
 import React from 'react';
 import FilterBtns from '../../containers/filterBtn';
-import { VisibilityFilters } from '../../actions';
+import { VisibilityFilters } from '../../constants/constants';
 import './controlBtns.scss';
 
 const ControlBtns = () => (

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import visibilityFilter from './visibilityFilters';
-import { items, itemsHasErrored, itemsIsLoading } from './items';
+import { itemsFetchDataSuccess, itemsHasErrored, itemsIsLoading } from './items';
 
 export default combineReducers({
   visibilityFilter,
-  items,
+  itemsFetchDataSuccess,
   itemsHasErrored,
   itemsIsLoading,
 });
