@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import uniqid from 'uniqid';
+
 import Event from '../event/event';
 import Loading from '../loading/loading';
 import RequestField from '../requestField/requestField';
-import { SPRAVA_API_MAIN_URL, CORS_URL, SPRAVA_API_URL } from '../../constants/constants';
+import {
+  SPRAVA_API_MAIN_URL, CORS_URL, SPRAVA_API_URL, ITEMS_STATUS_PARAMS,
+} from '../../constants/constants';
 import FESTIVAL_DAYS from '../../app-config/app-config';
 import './eventList.scss';
 
@@ -16,14 +20,13 @@ class EventList extends React.Component {
   render() {
     const {
       events,
-      hasErrored,
-      isLoading,
+      fetchStatus,
     } = this.props;
-    if (hasErrored) {
+    if (fetchStatus === ITEMS_STATUS_PARAMS.ITEMS_HAS_ERRORED) {
       return <RequestField />;
     }
 
-    if (isLoading) {
+    if (fetchStatus === ITEMS_STATUS_PARAMS.ITEMS_IS_LOADING) {
       return <Loading />;
     }
 
@@ -41,8 +44,7 @@ class EventList extends React.Component {
               .filter(e => events[e].date === `${FESTIVAL_DAYS.FIRST_DAY}`))
               .map(eventNumber => (
                 <Event
-                  key={events[eventNumber].id.match(/^\d+/)[0]
-                + events[eventNumber].id.match(/\d+$/)[0]}
+                  key={uniqid()}
                   img={events[eventNumber].img}
                   title={events[eventNumber].title}
                   schedule={events[eventNumber].schedule}
@@ -65,8 +67,7 @@ class EventList extends React.Component {
               .filter(e => events[e].date === `${FESTIVAL_DAYS.SECOUND_DAY}`))
               .map(eventNumber => (
                 <Event
-                  key={events[eventNumber].id.match(/^\d+/)[0]
-              + events[eventNumber].id.match(/\d+$/)[0]}
+                  key={uniqid()}
                   img={events[eventNumber].img}
                   title={events[eventNumber].title}
                   schedule={events[eventNumber].schedule}
@@ -84,8 +85,7 @@ class EventList extends React.Component {
 
 EventList.propTypes = {
   fetchData: PropTypes.func.isRequired,
-  hasErrored: PropTypes.bool.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  fetchStatus: PropTypes.string.isRequired,
   events: PropTypes.arrayOf(PropTypes.shape({
     img: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

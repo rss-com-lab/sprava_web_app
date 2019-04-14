@@ -1,20 +1,9 @@
-import { VisibilityFilters } from '../constants/constants';
+import { VisibilityFilters, ITEMS_STATUS_PARAMS } from '../constants/constants';
 
 export const FETCH_DATA_INITIAL_STATE = {
-  itemsHasErrored: {
-    payload: {
-      flag: false,
-    },
-  },
-  itemsIsLoading: {
-    payload: {
-      flag: false,
-    },
-  },
-  itemsFetchDataSuccess: {
-    payload: {
-      items: {},
-    },
+  payload: {
+    itemsStatus: ITEMS_STATUS_PARAMS.ITEMS_IS_LOADING,
+    items: {},
   },
 };
 

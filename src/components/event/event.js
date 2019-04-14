@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Parser from 'html-react-parser';
+import uniqid from 'uniqid';
+
 import Checkbox from '../checkbox/checkbox';
 import saveEvents from '../../api/saveEvents';
 import replaceAll from '../../api/replaceAll';
+
 
 import './event.scss';
 
@@ -16,11 +19,11 @@ const Event = ({
     </h4>
     <div className="events-section__event-data">
       <div className="events-section__event-img">
-        <img src={`http://spravafestival.by/${img}`} alt={`${title} preview`} />
+        <img src={`http://spravafestival.by/${img}`} alt={`${replaceAll(title, '<br/>', ' ')} preview`} />
       </div>
       <div className="events-sevtion__schedule">
         {Object.keys(schedule).map(eventParam => (
-          <div className="events-section__event-params">
+          <div className="events-section__event-params" key={uniqid()}>
             <h5 className="events-section__event-location">{schedule[eventParam].point}</h5>
             <p className="events-section__time">
               {schedule[eventParam].timeStart}

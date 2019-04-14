@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import EventList from '../components/eventList/eventList';
-import { setVisibilityFilter, itemsFetchData } from '../actions/index';
+import { setVisibilityFilter } from '../actions/filter';
+import { itemsFetchData } from '../actions/apiFetch';
 import { VisibilityFilters } from '../constants/constants';
 
 const getVisibleEvents = (filter, items) => {
@@ -47,10 +48,9 @@ const getVisibleEvents = (filter, items) => {
 
 const mapStateToProps = state => ({
   events: getVisibleEvents(state.visibilityFilter.payload.filter,
-    state.itemsFetchDataSuccess.payload.items),
-  items: state.itemsFetchDataSuccess.payload.items,
-  hasErrored: state.itemsHasErrored.payload.flag,
-  isLoading: state.itemsIsLoading.payload.flag,
+    state.itemsStatus.payload.items),
+  items: state.itemsStatus.payload.items,
+  fetchStatus: state.itemsStatus.payload.itemsStatus,
 });
 
 
