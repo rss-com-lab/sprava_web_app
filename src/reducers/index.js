@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import visibilityFilter from './visibilityFilters';
-import { itemsFetchDataSuccess, itemsHasErrored, itemsIsLoading } from './items';
+import visibilityFilter from '../actions/filter';
+import itemsStatus from '../actions/apiFetch';
 
 export default combineReducers({
   visibilityFilter,
-  itemsFetchDataSuccess,
-  itemsHasErrored,
-  itemsIsLoading,
+  itemsStatus,
 });
