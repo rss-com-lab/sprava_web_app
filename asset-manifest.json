@@ -1,13 +1,13 @@
 {
-  "main.css": "/sprava_web_app/static/css/main.f47ba7de.chunk.css",
-  "main.js": "/sprava_web_app/static/js/main.39300471.chunk.js",
-  "main.js.map": "/sprava_web_app/static/js/main.39300471.chunk.js.map",
+  "main.css": "/sprava_web_app/static/css/main.3408c51c.chunk.css",
+  "main.js": "/sprava_web_app/static/js/main.46f3256c.chunk.js",
+  "main.js.map": "/sprava_web_app/static/js/main.46f3256c.chunk.js.map",
   "runtime~main.js": "/sprava_web_app/static/js/runtime~main.6394e6c5.js",
   "runtime~main.js.map": "/sprava_web_app/static/js/runtime~main.6394e6c5.js.map",
-  "static/js/2.b3e2e64d.chunk.js": "/sprava_web_app/static/js/2.b3e2e64d.chunk.js",
-  "static/js/2.b3e2e64d.chunk.js.map": "/sprava_web_app/static/js/2.b3e2e64d.chunk.js.map",
+  "static/js/2.82538a56.chunk.js": "/sprava_web_app/static/js/2.82538a56.chunk.js",
+  "static/js/2.82538a56.chunk.js.map": "/sprava_web_app/static/js/2.82538a56.chunk.js.map",
   "index.html": "/sprava_web_app/index.html",
-  "precache-manifest.cd8072fadee2e8989f4104ebc139fd3f.js": "/sprava_web_app/precache-manifest.cd8072fadee2e8989f4104ebc139fd3f.js",
+  "precache-manifest.ff4a5e52ce40450fd5f31fb97f910db3.js": "/sprava_web_app/precache-manifest.ff4a5e52ce40450fd5f31fb97f910db3.js",
   "service-worker.js": "/sprava_web_app/service-worker.js",
-  "static/css/main.f47ba7de.chunk.css.map": "/sprava_web_app/static/css/main.f47ba7de.chunk.css.map"
+  "static/css/main.3408c51c.chunk.css.map": "/sprava_web_app/static/css/main.3408c51c.chunk.css.map"
 }
