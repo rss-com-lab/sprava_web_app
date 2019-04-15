@@ -1,5 +1,8 @@
 import 'whatwg-fetch';
-import { ACTION_TYPES, ITEMS_STATUS_PARAMS } from '../constants/constants';
+import {
+  ACTION_TYPES, ITEMS_STATUS_PARAMS,
+  SPRAVA_API_MAIN_URL, CORS_URL, SPRAVA_API_URL,
+} from '../constants/constants';
 import { FETCH_DATA_INITIAL_STATE } from '../reducers/initialState';
 
 export const itemsStatus = (itemsStatusData, dataSuccess = {}) => ({
@@ -10,7 +13,9 @@ export const itemsStatus = (itemsStatusData, dataSuccess = {}) => ({
   },
 });
 
-export const itemsFetchData = url => (dispatch) => {
+const URL_TO_FETCH_SPRAVA_DATA = `${CORS_URL}/${SPRAVA_API_MAIN_URL}/${SPRAVA_API_URL.music}`;
+
+export const itemsFetchData = () => (dispatch) => {
   const {
     ITEMS_HAS_ERRORED,
     ITEMS_IS_LOADING,
@@ -18,9 +23,11 @@ export const itemsFetchData = url => (dispatch) => {
   } = ITEMS_STATUS_PARAMS;
   dispatch(itemsStatus(ITEMS_IS_LOADING));
 
-  window.fetch(url, { cache: 'force-cache' })
+  window.fetch(URL_TO_FETCH_SPRAVA_DATA, { cache: 'force-cache' })
     .then((response) => {
       if (!response.ok) {
+        // eslint-disable-next-line no-console
+        console.error(`Oops, something went wrong with response. Error in fetch, response status: ${response.status}`);
         throw Error(response.statusText);
       }
 
