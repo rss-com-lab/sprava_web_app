@@ -1,34 +1,101 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Event from '../event/event';
+import uniqid from 'uniqid';
 
+import Event from '../event/event';
+import Loading from '../loading/loading';
+import RequestField from '../requestFailed/requestFailed';
+import { ITEMS_STATUS_PARAMS } from '../../constants/constants';
+import FESTIVAL_DAYS from '../../app-config/app-config';
 import './eventList.scss';
 
-const EventList = ({ events }) => (
-  <div className="events-section__event-list" id="event-list">
-    {events.map(e => (
-      <Event
-        key={e.id}
-        id={e.id}
-        eventName={e.eventName}
-        location={e.location}
-        time={e.time}
-        description={e.description}
-        isEventSave={Boolean(e.checked)}
-      />
-    ))}
-  </div>
-);
+class EventList extends React.Component {
+  componentDidMount() {
+    const { fetchData } = this.props;
+    fetchData();
+  }
+
+  render() {
+    const {
+      events,
+      fetchStatus,
+    } = this.props;
+
+    switch (fetchStatus) {
+      case ITEMS_STATUS_PARAMS.ITEMS_HAS_ERRORED: // fetch failed
+        return <RequestField />;
+
+      case ITEMS_STATUS_PARAMS.ITEMS_IS_LOADING: // loading
+        return <Loading />;
+
+      default: // fetch success
+        return (
+          <div className="events-section__event-list-container" id="event-list">
+            <div
+              className="events-section__first-day-events"
+              style={(Object.keys(events)
+                .filter(e => events[e].date === `${FESTIVAL_DAYS.FIRST_DAY}`).length > 0)
+                ? { display: 'block' } : { display: 'none' }}
+            >
+              <h5 className="events-section__day-title">{FESTIVAL_DAYS.FIRST_DAY}</h5>
+              <div className="events-section__first-day-events-list">
+                {(Object.keys(events)
+                  .filter(e => events[e].date === `${FESTIVAL_DAYS.FIRST_DAY}`))
+                  .map(eventNumber => (
+                    <Event
+                      key={uniqid()}
+                      img={events[eventNumber].img}
+                      title={events[eventNumber].title}
+                      schedule={events[eventNumber].schedule}
+                      link={events[eventNumber].link}
+                      id={events[eventNumber].id}
+                      isEventSave={Boolean(events[eventNumber].checked)}
+                    />
+                  ))}
+              </div>
+            </div>
+            <div
+              className="events-section__secound-day-events"
+              style={(Object.keys(events)
+                .filter(e => events[e].date === `${FESTIVAL_DAYS.SECOUND_DAY}`).length > 0)
+                ? { display: 'block' } : { display: 'none' }}
+            >
+              <h5 className="events-section__day-title">{FESTIVAL_DAYS.SECOUND_DAY}</h5>
+              <div className="events-section__secound-day-events-list">
+                {(Object.keys(events)
+                  .filter(e => events[e].date === `${FESTIVAL_DAYS.SECOUND_DAY}`))
+                  .map(eventNumber => (
+                    <Event
+                      key={uniqid()}
+                      img={events[eventNumber].img}
+                      title={events[eventNumber].title}
+                      schedule={events[eventNumber].schedule}
+                      link={events[eventNumber].link}
+                      id={events[eventNumber].id}
+                      isEventSave={Boolean(events[eventNumber].checked)}
+                    />
+                  ))}
+              </div>
+            </div>
+          </div>
+        );
+    }
+  }
+}
 
 EventList.propTypes = {
+  fetchData: PropTypes.func.isRequired,
+  fetchStatus: PropTypes.string.isRequired,
   events: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    eventName: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
-    time: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    schedule: PropTypes.objectOf(PropTypes.shape({
+      point: PropTypes.string.isRequired,
+      timeStart: PropTypes.string.isRequired,
+      timeEnd: PropTypes.string.isRequired,
+    })).isRequired,
+    link: PropTypes.string.isRequired,
   }).isRequired).isRequired,
 };
-
 
 export default EventList;

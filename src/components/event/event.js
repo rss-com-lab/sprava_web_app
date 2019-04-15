@@ -1,42 +1,66 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cn from 'classnames';
+import Parser from 'html-react-parser';
+import uniqid from 'uniqid';
+
 import Checkbox from '../checkbox/checkbox';
 import saveEvents from '../../api/saveEvents';
+import replaceAll from '../../api/replaceAll';
+
 
 import './event.scss';
 
 const Event = ({
-  id, eventName, location, time, description, isEventSave,
+  img, title, schedule, link, isEventSave, id,
 }) => (
-  <div className="events-section__event-container" id={id}>
+  <div className="events-section__event-container">
+    <h4 className="event-data__event-header">
+      {Parser(title)}
+    </h4>
     <div className="events-section__event-data">
-      <h4 className="event-data__event-header">{eventName}</h4>
-      <div className="event-data__time-location">
-        <div className="event-data__event-location">
-          {location}
-        </div>
-        <span className="event-data__event-time">
-          {time}
-        </span>
+      <div className="events-section__event-img">
+        <img src={`http://spravafestival.by/${img}`} alt={`${replaceAll(title, '<br/>', ' ')} preview`} />
       </div>
-      <p className="event-data__event-descr">
-        {description}
-      </p>
+      <div className="events-sevtion__schedule">
+        {Object.keys(schedule).map(eventParam => (
+          <div className="events-section__event-params" key={uniqid()}>
+            <h5 className="events-section__event-location">{schedule[eventParam].point}</h5>
+            <p className="events-section__time">
+              {schedule[eventParam].timeStart}
+            -
+              {schedule[eventParam].timeEnd}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div className="event-data__group-link-container">
+      <a
+        href={link}
+        target="blank"
+        title={replaceAll(title, '<br/>', ' ')}
+        className="event-data__group-link"
+      >
+      Сайт группы
+      </a>
     </div>
     <div className="events-section__event-checkbox">
-      <Checkbox label="Выбрать" isSaved={isEventSave} handleCheckboxChange={saveEvents} id={cn(`choose-event-${id}`)} />
+      <Checkbox label="Выбрать" isSaved={isEventSave} id={id} handleCheckboxChange={saveEvents} />
     </div>
   </div>
 );
 
 Event.propTypes = {
-  id: PropTypes.number.isRequired,
-  eventName: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  time: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  schedule: PropTypes.objectOf(PropTypes.shape({
+    point: PropTypes.string.isRequired,
+    timeStart: PropTypes.string.isRequired,
+    timeEnd: PropTypes.string.isRequired,
+  })).isRequired,
+  link: PropTypes.string.isRequired,
   isEventSave: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Event;

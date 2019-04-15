@@ -1,0 +1,35 @@
+.loading__animation-elements-container {
+  background-color: #fff;
+  width: max-content;
+  margin: 100px auto; 
+  animation: blinker 2s linear infinite;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.loading__animation-element {
+  background-color: #000;
+  margin: 8px;
+  width: 15px;
+}
+
+.last-element {
+  height: 120px;
+}
+
+.central-element {
+  height: 200px;
+}
+
+.main-element {
+  height: 120px;
+  align-self: flex-start;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
