@@ -3,7 +3,8 @@ html {
 }
 
 html, body {
-  height: 100%;
+  min-height: 100vh;
+  position: relative;
 }
 
 body {
@@ -14,9 +15,13 @@ body {
   -moz-osx-font-smoothing: grayscale; 
 }
 
+.events-section {
+  padding-bottom: 2.5rem;
+}
+
 .container {
   max-width: 1170px;
-  width: 75%;
+  width: 85%;
   margin: 0 auto; 
 }
 
@@ -37,9 +42,6 @@ body {
   color: #efefef;
 }
 
-.events-section{
-  min-height: calc(100vh - 75px);
-}
 
 .footer__links-container{
   color: #989898;
@@ -64,6 +66,8 @@ body {
 }
 
 .footer{
-  height: 75px;
   background-color: #3C3C3C;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

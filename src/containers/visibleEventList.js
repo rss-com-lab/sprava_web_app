@@ -1,43 +1,45 @@
 import { connect } from 'react-redux';
 import EventList from '../components/eventList/eventList';
-import { VisibilityFilters, setVisibilityFilter } from '../actions/index';
-import eventsData from '../eventsData/eventsData';
+import { setVisibilityFilter } from '../actions/filter';
+import { itemsFetchData } from '../actions/apiFetch';
+import { VisibilityFilters } from '../constants/constants';
 
-const getVisibleEvents = (filter) => {
+const getVisibleEvents = (filter, items) => {
+  let musicAPI;
   const localIdArray = (localStorage.getItem('checkedEventList'))
-    ? localStorage.getItem('checkedEventList').split(',').map(elem => parseInt(elem, 10))
+    ? localStorage.getItem('checkedEventList').split(',')
     : [];
-  let currentEventList = [];
+  const currentEventListExperiment = [];
+
+  if (!(Object.entries(items).length === 0 && items.constructor === Object)) {
+    musicAPI = { ...items };
+    Object.keys(musicAPI).forEach((day) => { // if haven't saved upload clean list
+      Object.keys(musicAPI[day].items).forEach((item) => {
+        const customItem = { ...musicAPI[day].items[item] };
+        customItem.date = musicAPI[day].date;
+        customItem.id = `${item}/date-${(customItem.date).split('')[0]}`;
+        customItem.checked = false;
+        currentEventListExperiment.push(customItem);
+      });
+    });
+    if (localIdArray.length > 0
+      && currentEventListExperiment.length > 0) { // to checked saved events but to initial state
+      localIdArray.forEach((eventId) => {
+        const currentEvent = currentEventListExperiment // deep copy !!!
+          .find(event => event.id === eventId);
+        currentEvent.checked = true;
+      });
+    }
+  }
+
   switch (filter) {
     case VisibilityFilters.SHOW_ALL:
     {
-      if (localIdArray.length > 0) { // to checked saved events
-        localIdArray.forEach((eventId) => {
-          const currentEvent = { ...eventsData.find(event => event.id === eventId) };
-          currentEvent.checked = true;
-          currentEventList.push(currentEvent);
-        });
-        eventsData.forEach((event) => {
-          if (!currentEventList.find(e => e.id === event.id)) {
-            const currentEvent = event;
-            currentEvent.checked = false;
-            currentEventList.push(currentEvent);
-          }
-        });
-        currentEventList.sort((event, nextEvent) => event.id - nextEvent.id);
-      } else {
-        currentEventList = eventsData.slice(); // if haven't saved upload clean list
-      }
-      return currentEventList;
+      return currentEventListExperiment;
     }
     case VisibilityFilters.SHOW_SAVED:
     {
-      localIdArray.forEach((elem) => { // show only saved events
-        const currentEvent = { ...eventsData.find(event => event.id === elem) };
-        currentEvent.checked = true;
-        currentEventList.push(currentEvent);
-      });
-      return currentEventList;
+      return currentEventListExperiment.filter(event => event.checked === true);
     }
     default:
       throw new Error(`Unknown filter: ${filter}`);
@@ -45,11 +47,16 @@ const getVisibleEvents = (filter) => {
 };
 
 const mapStateToProps = state => ({
-  events: getVisibleEvents(state.visibilityFilter.filter),
+  events: getVisibleEvents(state.visibilityFilter.payload.filter,
+    state.itemsStatus.payload.items),
+  items: state.itemsStatus.payload.items,
+  fetchStatus: state.itemsStatus.payload.itemsStatus,
 });
+
 
 const mapDispatchToProps = dispatch => ({
   setVisibilityFilter: filter => dispatch(setVisibilityFilter(filter)),
+  fetchData: url => dispatch(itemsFetchData(url)),
 });
 
 export default connect(

@@ -6,12 +6,12 @@
 
 .option {
   display: block;
-  margin-bottom: 0.5em;
+  margin-bottom: 8px;
 }
 
 /* Check */
 .label__control {
-  padding-left: 1.2em;
+  padding-left: 16px;
 }
 
 .check__input {
@@ -23,17 +23,17 @@
 
 .check__box {
   position: absolute;
-  margin-top: 0.2em;
-  margin-left: -1em;
+  margin-top: -60px;
+  margin-left: -16px;
   cursor: pointer;
-  width: 1em;
-  height: 1em;
+  width: 16px;
+  height: 16px;
   overflow: hidden;
-  border-radius: 0.05em;
+  border-radius: 1px;
   background-color: white;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  box-shadow: 0 0 0 0.1em #4A90E2;
+  box-shadow: 0 0 0 2px #4A90E2;
 }
 
 /* Checked */
@@ -47,14 +47,14 @@
 
 .check__input:focus + .check__box {
   box-shadow:
-    0 0 0 0.1em #4A90E2,
-    0 0 0 0.2em #7ED321;
+    0 0 0 0.16px #4A90E2,
+    0 0 0 3px #7ED321;
 }
 
 /* Disabled */
 
 .check__input:disabled + .check__box {
-  box-shadow: 0 0 0 0.1em #9B9B9B;
+  box-shadow: 0 0 0 0.16px #9B9B9B;
 }
 
 .check__input:checked:disabled + .check__box {
