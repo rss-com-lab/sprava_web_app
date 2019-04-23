@@ -1,5 +1,5 @@
 import React from 'react';
-import './requestField.scss';
+import './requestFailed.scss';
 
 const RequestField = () => (
   <div className="request-field__container">
