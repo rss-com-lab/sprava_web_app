@@ -1,52 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/sprava-log-128x128.png" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="Description" content="SPRAVA festival">
-    <meta name="theme-color" content="#000000" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>SPRAVA</title>
-  </head>
-  <body>
-    <header class="header">
-      <div class="header__content container">
-        <h1 class="header__text">СОБЫТИЯ</h1>
-      </div>
-    </header>
-    <section class="events-section">
-      <div class="events-section__content container">
-        <div id="root">
-          <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="%PUBLIC_URL%/sprava-logo-128x128.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="Description" content="SPRAVA festival">
+  <meta name="theme-color" content="#000000" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>SPRAVA</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__content container">
+      <h1 class="header__text">СОБЫТИЯ</h1>
+    </div>
+  </header>
+  <section class="events-section">
+    <div class="events-section__content container">
+      <div id="root">
+        <!--
             events list located heare
            -->
-        </div>
-    </section>
-    <footer class="footer">
-      <div class="footer__links-container container">
-        <ul class="links__container">
-          <li><a class="contacts__link" title="Facebook" href="https://www.facebook.com/spravafest" target="_blank">Facebook</a></li>
-          <li><a class="contacts__link" title="Vk" href="https://vk.com/public149624816" target="_blank">Vkontakte</a></li>
-          <li><a class="contacts__link" title="Instagram" href="https://www.instagram.com/spravafestival/" target="_blank">Instagram</a></li>
-        </ul>
       </div>
-    </footer>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('./service-worker.js').then(function(registration) {
-            // Registration was successful
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, function(err) {
-            // registration failed :(
-            console.log('ServiceWorker registration failed: ', err);
-          });
-        });
-      }
-    </script>
-  </body>
+  </section>
+  <footer class="footer">
+    <div class="footer__links-container container">
+      <ul class="links__container">
+        <li><a class="contacts__link" title="Facebook" href="https://www.facebook.com/spravafest"
+            target="_blank">Facebook</a></li>
+        <li><a class="contacts__link" title="Vk" href="https://vk.com/public149624816" target="_blank">Vkontakte</a>
+        </li>
+        <li><a class="contacts__link" title="Instagram" href="https://www.instagram.com/spravafestival/"
+            target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </footer>
+  <script src="./swRegister.js"></script>
+</body>
+
 </html>
