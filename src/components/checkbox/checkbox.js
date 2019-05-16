@@ -38,7 +38,7 @@ class Checkbox extends React.Component {
             onChange={this.toggleCheckboxChange}
             id={id}
           />
-          <span className="check__box" />
+          <span className="check__box" id="check__box" />
         </label>
       </div>
     );

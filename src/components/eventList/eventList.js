@@ -71,7 +71,7 @@ class EventList extends React.Component {
                               registration.showNotification(title, {
                                 body: `${title} скоро начнет свое выступление. Место выступления: ${location}`,
                                 icon: './icons/sprava_logo-192x192.png',
-                                badge: './sprava-log-badge-128x128.png',
+                                badge: './icons/sprava-log-badge-128x128.png',
                                 image: `http://spravafestival.by/${events[eventNumber].img}`,
                               });
                             });

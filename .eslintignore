@@ -1,3 +1,4 @@
 #Config files
 /build/
 /src/serviceWorker.js
+/public/

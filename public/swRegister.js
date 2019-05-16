@@ -1,8 +1,7 @@
-/* eslint-disable no-console */
-if ('serviceWorker' in navigator && 'Notification' in window) {
+if ('serviceWorker' in navigator && 'Notification' in window && 'PushManager' in window) {
   console.log('Service Worker and Notifications is supported');
 
-  navigator.serviceWorker.register('./service-worker.js')
+  navigator.serviceWorker.register('./firebase-messaging-sw.js')
     .then(() => {
       console.log('Service Worker is registered');
     })
@@ -11,22 +10,4 @@ if ('serviceWorker' in navigator && 'Notification' in window) {
     });
 } else {
   console.warn('Notification is not supported');
-}
-
-if (window.Notification && Notification.permission !== 'denied') {
-  Notification.requestPermission((status) => {
-    switch (status) {
-      case 'granted':
-        console.log('Permision granted, notifications allowed');
-        break;
-      case 'denied':
-        console.log('Permission wasn\'t granted. Allow a retry.');
-        break;
-      case 'default':
-        console.log('The permission request was dismissed.');
-        break;
-      default:
-        break;
-    }
-  });
 }

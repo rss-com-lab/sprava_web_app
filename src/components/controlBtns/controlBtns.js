@@ -7,6 +7,7 @@ const ControlBtns = () => (
   <div className="event-section__controlBtns">
     <FilterBtns filter={VisibilityFilters.SHOW_ALL}>All</FilterBtns>
     <FilterBtns filter={VisibilityFilters.SHOW_SAVED}>Saved</FilterBtns>
+    <div className="controlBtns__notification on" id="notify-indicator" />
   </div>
 );
 

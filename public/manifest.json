@@ -7,6 +7,7 @@
   "display": "standalone",
   "theme_color": "#0275d8",
   "background_color": "#ACD037",
+  "gcm_sender_id": "103953800507",
   "icons": [
     {
       "src": "icons/sprava_logo-192x192.png",

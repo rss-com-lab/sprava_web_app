@@ -4,6 +4,7 @@ import Btn from '../components/btn/btn';
 
 const mapStateToProps = (state, ownProps) => ({
   active: ownProps.filter === state.visibilityFilter.payload.filter,
+  className: 'controlBtns__switcher-btn',
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
