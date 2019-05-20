@@ -3,23 +3,15 @@ importScripts('https://www.gstatic.com/firebasejs/5.7.2/firebase-messaging.js');
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: "AIzaSyC2lUGqE5-QdrVJlq2pJSBSMZsjIntFu00",
-  authDomain: "sprava-web-app.firebaseapp.com",
-  databaseURL: "https://sprava-web-app.firebaseio.com",
-  projectId: "sprava-web-app",
-  storageBucket: "sprava-web-app.appspot.com",
-  messagingSenderId: "1000922505749",
-  appId: "1:1000922505749:web:949652bee5fe6c63"
+  apiKey: "AIzaSyAQvKgaueZ0_jurnxP4pC-1LoGM8CdwQRM",
+  authDomain: "sprava-app-78962.firebaseapp.com",
+  databaseURL: "https://sprava-app-78962.firebaseio.com",
+  projectId: "sprava-app-78962",
+  storageBucket: "sprava-app-78962.appspot.com",
+  messagingSenderId: "1056885498492",
+  appId: "1:1056885498492:web:92940cc924ea5e0f"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 const messaging = firebase.messaging();
-
-self.addEventListener('notificationclick', (event) => {
-  if (event.action) {
-    clients.openWindow(event.action);
-  }
-  alert('notificationclick');
-  event.notification.close();
-});
