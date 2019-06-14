@@ -1,4 +1,6 @@
-import 'whatwg-fetch';
+import firebase from 'firebase/app';
+import 'firebase/database';
+
 import {
   ACTION_TYPES, ITEMS_STATUS_PARAMS,
   SPRAVA_API_MAIN_URL, CORS_URL, SPRAVA_API_URL,
@@ -26,15 +28,21 @@ export const itemsFetchData = () => (dispatch) => {
   window.fetch(URL_TO_FETCH_SPRAVA_DATA, { cache: 'force-cache' })
     .then((response) => {
       if (!response.ok) {
-        // eslint-disable-next-line no-console
         console.error(`Oops, something went wrong with response. Error in fetch, response status: ${response.status}`);
         throw Error(response.statusText);
       }
-
       return response;
     })
     .then(response => response.json())
     .then((items) => {
+      const FIREBASE_MESSAGING = firebase.messaging();
+      const FIREBASE_DATABASE = firebase.database();
+      FIREBASE_MESSAGING.requestPermission()
+        .then(() => {
+          console.log('Permission granted');
+          FIREBASE_DATABASE.ref('/data').update({ ...items });
+        })
+        .catch(err => console.error(err));
       dispatch(itemsStatus(ITEMS_FETCH_DATA_SUCCESS, items));
     })
     .catch(() => {

@@ -50,34 +50,6 @@ class EventList extends React.Component {
                       link={events[eventNumber].link}
                       id={events[eventNumber].id}
                       isEventSave={Boolean(events[eventNumber].checked)}
-
-                      // notifications worker
-                      {...setInterval(() => {
-                        const event = events[eventNumber].schedule;
-                        const { title } = events[eventNumber];
-                        const schedule = Object.keys(event);
-                        const currentDate = new Date();
-                        currentDate.setSeconds(0);
-
-                        schedule.forEach((eventShedule) => {
-                          const eventDate = new Date();
-                          const hours = (event[eventShedule].timeStart).match(/^\w+/g);
-                          const minutes = (event[eventShedule].timeStart).match(/\w+$/g);
-                          const location = event[eventShedule].point;
-                          eventDate.setHours(hours, minutes, 0);
-
-                          if (eventDate.getTime() === currentDate.getTime()) {
-                            navigator.serviceWorker.ready.then((registration) => {
-                              registration.showNotification(title, {
-                                body: `${title} скоро начнет свое выступление. Место выступления: ${location}`,
-                                icon: './icons/sprava_logo-192x192.png',
-                                badge: './icons/sprava-log-badge-128x128.png',
-                                image: `http://spravafestival.by/${events[eventNumber].img}`,
-                              });
-                            });
-                          }
-                        });
-                      }, 60000)}
                     />
                   ))}
               </div>

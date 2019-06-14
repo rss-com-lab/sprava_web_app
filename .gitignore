@@ -68,3 +68,6 @@ build/
 #vscode debug
 .vscode/
 .vscode-janus-debug
+
+
+.firebase/

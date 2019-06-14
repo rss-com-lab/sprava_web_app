@@ -9,7 +9,6 @@ import App from './components/app/App';
 // firebase scripts
 import firebaseInit from './api/firebase';
 
-import * as serviceWorker from './serviceWorker';
 import './styleReset.css';
 import './index.css';
 
@@ -24,5 +23,4 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-serviceWorker.register();
 firebaseInit();
