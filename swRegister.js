@@ -1,7 +1,7 @@
 if ('serviceWorker' in navigator && 'Notification' in window && 'PushManager' in window) {
   console.log('Service Worker and Notifications is supported');
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
+    navigator.serviceWorker.register('./service-worker.js')
       .then((registration) => {
         console.log('Service Worker is registered', registration.scope);
       })
